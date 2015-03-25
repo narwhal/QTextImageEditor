@@ -1,0 +1,3 @@
+[submodule "QTextImage"]
+	path = QTextImage
+	url = ssh://git@github.com/narwhal/QTextImage
