@@ -9,6 +9,7 @@ QT       += core gui widgets
 include(QTextImage/qtextimage.pri)
 TARGET = QTextImageEditor
 TEMPLATE = app
+win32:RC_FILE += QTextImageEditor.rc
 
 CONFIG += c++11
 
