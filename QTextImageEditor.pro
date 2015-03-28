@@ -20,3 +20,6 @@ HEADERS  += mainwindow.h \
     penmodel.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    qtextimage.qrc

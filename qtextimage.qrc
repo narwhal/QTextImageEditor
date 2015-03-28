@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Narwhal_circle_128.png</file>
+    </qresource>
+</RCC>
