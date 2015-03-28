@@ -20,6 +20,7 @@ private slots:
     void on_editor_textChanged();
     void draw();
     void on_actionAboutQt_triggered();
+    void on_actionAbout_triggered();
 
 private:
     Ui::MainWindow *ui;

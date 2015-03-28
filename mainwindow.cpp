@@ -62,3 +62,21 @@ void MainWindow::draw() {
 void MainWindow::on_actionAboutQt_triggered() {
     QMessageBox::aboutQt(this);
 }
+
+void MainWindow::on_actionAbout_triggered() {
+    QString title = tr("About QTextImageEditor");
+    QString text = tr("<p>QTextImageEditor is a simple ASCIImage editor based on <a href=\"https://github.com/narwhal/QTextImage\">QTextImage</a>.</p>"
+                      "<p>The ASCIImage format was created by <a href=\"http://cocoamine.net\">Charles Parnot</a>, see the <a href=\"http://asciimage.org\">official website</a> for documentation about the format.</p>"
+                      "<p>QTextImageEditor is free software, licensed under a BSD-like license you can read in the LICENSE file.</p<"
+                      "<p>Copyright © 2015 <a href=\"http://www.narwhal.it\">Narwhal Software</a></p>");
+    QMessageBox msgBox(title, text, QMessageBox::Information, 0, 0, 0, this
+    #ifdef Q_WS_MAC
+    , Qt::WindowTitleHint | Qt::WindowSystemMenuHint
+    #endif
+    );
+    QIcon icon = msgBox.windowIcon();
+    QSize size = icon.actualSize(QSize(64, 64));
+    msgBox.setIconPixmap(icon.pixmap(size));
+    msgBox.setTextFormat(Qt::RichText);
+    msgBox.exec();
+}

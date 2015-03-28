@@ -60,6 +60,7 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionAbout"/>
     <addaction name="actionAboutQt"/>
    </widget>
    <addaction name="menuHelp"/>
@@ -70,6 +71,14 @@
    </property>
    <property name="toolTip">
     <string>Information about Qt</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About QTextImageEditor...</string>
+   </property>
+   <property name="toolTip">
+    <string>Information on QTextImageEditor</string>
    </property>
   </action>
  </widget>
