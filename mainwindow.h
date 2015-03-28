@@ -19,6 +19,8 @@ public:
 private slots:
     void on_editor_textChanged();
     void draw();
+    void on_actionAboutQt_triggered();
+
 private:
     Ui::MainWindow *ui;
     PenModel model;

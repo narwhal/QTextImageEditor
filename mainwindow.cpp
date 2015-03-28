@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include "QTextImage/qtextimage.h"
 
+
+#include <QMessageBox>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -56,3 +59,6 @@ void MainWindow::draw() {
     model.setVisibleGlyphs(drawnGlyphs);
 }
 
+void MainWindow::on_actionAboutQt_triggered() {
+    QMessageBox::aboutQt(this);
+}
