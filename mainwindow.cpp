@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->colorEditor->horizontalHeader()->setSectionResizeMode(PenModel::BrushColor, QHeaderView::Stretch);
 
     connect(&model, &PenModel::dataChanged, this, &MainWindow::draw);
-    connect(&model, &PenModel::modelReset, this, &MainWindow::draw);
 
     ui->editor->setPlainText(QStringLiteral(
         ". . . . 1 1 1 . . . .\n"
@@ -41,24 +40,19 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_editor_textChanged() {
-    QString text = ui->editor->toPlainText();
-
-    QString glyphs = QStringLiteral("123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-    QSet<char> validGlyphs;
-    for (auto glyph: glyphs) {
-        if (text.contains(glyph, Qt::CaseSensitive)) {
-            validGlyphs.insert(glyph.toLatin1());
-        }
-    }
     draw();
 }
 
 void MainWindow::draw() {
+    QSet<char> drawnGlyphs;
     QTextImage ti = QTextImage::parse(ui->editor->toPlainText().toLatin1());
-    QImage img = ti.render(10, [this](char glyph, QPainter &painter){
+    QImage img = ti.render(10, [this, &drawnGlyphs](char glyph, QPainter &painter){
+        drawnGlyphs.insert(glyph);
         QPair<QPen, QBrush> config = model.glyphConfig(glyph);
         painter.setPen(config.first);
         painter.setBrush(config.second);
     });
     ui->preview->setPixmap(QPixmap::fromImage(img));
+    model.setVisibleGlyphs(drawnGlyphs);
 }
+

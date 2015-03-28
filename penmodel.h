@@ -32,7 +32,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
 public slots:
-
+    void setVisibleGlyphs(QSet<char> glyphs);
 private:
     QMap<char, QPair<QPen,QBrush> > glyphData;
     QList<char> glyphList;

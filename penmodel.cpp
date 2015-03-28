@@ -1,14 +1,20 @@
 #include "penmodel.h"
 #include <QDebug>
+
+namespace {
+static const std::string &validGlyphs() {
+    static std::string glyphs("123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+    return glyphs;
+}
+}
 PenModel::PenModel(QObject *parent) :
     QAbstractTableModel(parent)
 {
-    for (char c: std::string("123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")) {
-        glyphList << c;
-    }
-    for (char glyph: glyphList) {
+    for (char glyph: validGlyphs()) {
         if (!glyphData.contains(glyph)) {
-            glyphData[glyph] = qMakePair(QPen(), QBrush(Qt::transparent));
+            QPen pen;
+            pen.setJoinStyle(Qt::MiterJoin);
+            glyphData[glyph] = qMakePair(pen, QBrush(Qt::transparent));
         }
     }
 }
@@ -109,5 +115,16 @@ Qt::ItemFlags PenModel::flags(const QModelIndex &index) const {
     if (index.column() != Glyph)
         f |= Qt::ItemIsEditable;
     return f;
+}
+
+void PenModel::setVisibleGlyphs(QSet<char> glyphs) {
+    beginResetModel();
+    QList<char> list;
+    for (char c: validGlyphs()) {
+        if (glyphs.contains(c))
+            list << c;
+    }
+    glyphList.swap(list);
+    endResetModel();
 }
 
