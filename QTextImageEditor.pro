@@ -7,7 +7,7 @@
 QT       += core gui widgets
 
 include(QTextImage/qtextimage.pri)
-TARGET = qtieditor
+TARGET = QTextImageEditor
 TEMPLATE = app
 
 CONFIG += c++11
