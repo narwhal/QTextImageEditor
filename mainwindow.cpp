@@ -10,8 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QFont font("monospace");
-    font.setStyleHint(QFont::Monospace);
+    QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
     ui->editor->setFont(font);
 
     ui->colorEditor->setModel(&model);
