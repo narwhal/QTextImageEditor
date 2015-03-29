@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(&model, &PenModel::dataChanged, this, &MainWindow::draw);
 
-    ui->editor->setPlainText(QStringLiteral(
+    ui->editor->setPlainText(QString(
         ". . . . 1 1 1 . . . .\n"
         ". . 1 . . . . . 1 . .\n"
         ". 1 . . . . . . . 1 .\n"
