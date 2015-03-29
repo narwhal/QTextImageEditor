@@ -11,6 +11,8 @@ TARGET = QTextImageEditor
 TEMPLATE = app
 win32:RC_FILE += QTextImageEditor.rc
 macx:ICON = Narwhal.icns
+unix:INSTALLS = target
+unix:target.path = $$PREFIX/bin
 CONFIG += c++11
 
 SOURCES += main.cpp\
