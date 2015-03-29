@@ -72,6 +72,9 @@
    <property name="toolTip">
     <string>Information about Qt</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::AboutQtRole</enum>
+   </property>
   </action>
   <action name="actionAbout">
    <property name="text">
@@ -79,6 +82,9 @@
    </property>
    <property name="toolTip">
     <string>Information on QTextImageEditor</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
  </widget>
