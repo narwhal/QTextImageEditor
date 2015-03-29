@@ -10,7 +10,7 @@ include(QTextImage/qtextimage.pri)
 TARGET = QTextImageEditor
 TEMPLATE = app
 win32:RC_FILE += QTextImageEditor.rc
-
+macx:ICON = Narwhal.icns
 CONFIG += c++11
 
 SOURCES += main.cpp\
